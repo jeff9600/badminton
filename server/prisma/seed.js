@@ -1,72 +1,92 @@
-import { readFileSync } from 'fs'
-import { fileURLToPath } from 'url'
-import { dirname, join } from 'path'
+import { PrismaClient } from '@prisma/client';
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const prisma = new PrismaClient();
 
-// When Prisma is working, this would use:
-// import { PrismaClient } from '@prisma/client'
-// const prisma = new PrismaClient()
+function daysFromNow(n) {
+  const d = new Date();
+  d.setDate(d.getDate() + n);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
 
 async function main() {
-  console.log('🌱 Démarrage du seeding...')
-  
-  // Load seed data
-  const newsData = JSON.parse(readFileSync(join(__dirname, '../data/news.json'), 'utf-8'))
-  const sessionsData = JSON.parse(readFileSync(join(__dirname, '../data/sessions.json'), 'utf-8'))
-  
-  console.log(`📰 ${newsData.length} articles d'actualités à insérer`)
-  console.log(`🏸 ${sessionsData.length} séances à insérer`)
-  
-  // When Prisma is working, this would be:
-  // 
-  // // Clear existing data
-  // await prisma.session.deleteMany()
-  // await prisma.news.deleteMany()
-  // 
-  // // Insert news
-  // for (const article of newsData) {
-  //   await prisma.news.create({
-  //     data: {
-  //       id: article.id,
-  //       title: article.title,
-  //       body: article.body,
-  //       author: article.author,
-  //       date: new Date(article.date),
-  //       published: article.published,
-  //       featured: article.featured,
-  //       excerpt: article.excerpt
-  //     }
-  //   })
-  // }
-  // 
-  // // Insert sessions
-  // for (const session of sessionsData) {
-  //   await prisma.session.create({
-  //     data: {
-  //       id: session.id,
-  //       date: new Date(session.date),
-  //       start: session.start,
-  //       end: session.end,
-  //       location: session.location,
-  //       level: session.level,
-  //       coach: session.coach,
-  //       slots: session.slots,
-  //       available: session.available
-  //     }
-  //   })
-  // }
-  
-  console.log('✅ Seeding terminé avec succès!')
-  console.log('📝 Note: Cette version utilise des fichiers JSON comme simulation de base de données')
+  await prisma.session.deleteMany();
+  await prisma.news.deleteMany();
+
+  const newsData = [
+    {
+      title: 'Reprise des entraînements',
+      body:
+        "La saison redémarre ! Séances adaptées à tous les niveaux. " +
+        "Pensez à votre bouteille d’eau et à vos chaussures propres.",
+      author: 'Comité',
+      date: daysFromNow(-5),
+      published: true
+    },
+    {
+      title: 'Tournoi interne – Inscriptions ouvertes',
+      body:
+        "Notre tournoi amical arrive ! Inscrivez-vous avant la fin du mois. " +
+        "Tableaux par niveaux, lots à gagner et bonne ambiance garantie.",
+      author: 'Alex',
+      date: daysFromNow(-2),
+      published: true
+    },
+    {
+      title: 'Portes ouvertes',
+      body:
+        "Séance découverte pour les nouveaux. Matériel disponible sur place. " +
+        "Venez avec des amis !",
+      author: 'Comité',
+      date: daysFromNow(-1),
+      published: true
+    }
+  ];
+
+  const sessionsData = [
+    {
+      date: daysFromNow(1),
+      start: '19:00',
+      end: '21:00',
+      location: 'Gymnase A',
+      level: 'Tous niveaux',
+      coach: 'Sophie',
+      slots: 24,
+      available: 10
+    },
+    {
+      date: daysFromNow(3),
+      start: '18:30',
+      end: '20:30',
+      location: 'Gymnase B',
+      level: 'Débutants / Intermédiaires',
+      coach: 'Marc',
+      slots: 20,
+      available: 12
+    },
+    {
+      date: daysFromNow(5),
+      start: '20:00',
+      end: '22:00',
+      location: 'Gymnase A',
+      level: 'Confirmés',
+      coach: null,
+      slots: 16,
+      available: 7
+    }
+  ];
+
+  await prisma.news.createMany({ data: newsData });
+  await prisma.session.createMany({ data: sessionsData });
+
+  console.log('Seed completed.');
 }
 
 main()
   .catch((e) => {
-    console.error('❌ Erreur lors du seeding:', e)
-    process.exit(1)
+    console.error(e);
+    process.exit(1);
   })
   .finally(async () => {
-    // When Prisma is working: await prisma.$disconnect()
-  })
+    await prisma.$disconnect();
+  });

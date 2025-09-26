@@ -1,29 +1,23 @@
 {
   "name": "badminton-server",
-  "version": "1.0.0",
-  "description": "Backend API pour le club de badminton",
-  "main": "src/index.js",
+  "version": "0.1.0",
+  "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node --watch src/index.js",
-    "start": "node src/index.js",
-    "prisma:migrate": "prisma migrate dev",
+    "dev": "node --watch ./src/index.js",
+    "start": "node ./src/index.js",
     "prisma:generate": "prisma generate",
-    "prisma:seed": "node prisma/seed.js"
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "prisma db seed"
   },
-  "keywords": [
-    "badminton",
-    "api",
-    "express",
-    "prisma"
-  ],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^6.16.2",
+    "@prisma/client": "^5.17.0",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.2",
-    "express": "^5.1.0",
-    "prisma": "^6.16.2"
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "prisma": "^5.17.0"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   }
 }

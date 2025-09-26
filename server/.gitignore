@@ -1,9 +1,4 @@
-# Environment variables
+node_modules
 .env
-
-# SQLite database
-*.db
-*.db-journal
-
-# Prisma
-prisma/migrations/
+prisma/dev.db
+prisma/dev.db-journal
