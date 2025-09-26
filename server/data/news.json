@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Tournoi de fin d'année",
+    "date": "2024-12-15T10:00:00.000Z",
+    "author": "Pierre Martin",
+    "body": "Notre tournoi annuel aura lieu le 15 décembre 2024. Inscriptions ouvertes jusqu'au 1er décembre. Venez nombreux!",
+    "excerpt": "Participez à notre tournoi annuel le 15 décembre 2024.",
+    "featured": true,
+    "published": true
+  },
+  {
+    "id": 2,
+    "title": "Nouveaux créneaux d'entraînement",
+    "date": "2024-11-20T09:00:00.000Z",
+    "author": "Marie Dubois",
+    "body": "De nouveaux créneaux d'entraînement sont disponibles le mercredi soir de 19h à 21h. Parfait pour les débutants!",
+    "excerpt": "Nouveaux créneaux le mercredi soir pour les débutants.",
+    "featured": false,
+    "published": true
+  },
+  {
+    "id": 3,
+    "title": "Stage de perfectionnement",
+    "date": "2024-11-10T14:00:00.000Z",
+    "author": "Jean Durand",
+    "body": "Un stage de perfectionnement sera organisé pendant les vacances scolaires avec un entraîneur professionnel.",
+    "excerpt": "Stage de perfectionnement pendant les vacances scolaires.",
+    "featured": false,
+    "published": true
+  },
+  {
+    "id": 4,
+    "title": "Assemblée générale annuelle",
+    "date": "2024-10-25T18:30:00.000Z",
+    "author": "Sophie Bernard",
+    "body": "L'assemblée générale du club aura lieu le 25 octobre 2024 à 18h30 au gymnase municipal. Présence souhaitable de tous les membres.",
+    "excerpt": "Assemblée générale du club le 25 octobre 2024.",
+    "featured": false,
+    "published": true
+  }
+]

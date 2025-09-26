@@ -13,12 +13,19 @@ Site web moderne pour un club de badminton, développé avec Vue 3, Vite et Tail
 
 ## Technologies utilisées
 
+### Frontend
 - **Vue 3** - Framework JavaScript progressif
 - **Vite** - Outil de build moderne et rapide
 - **Vue Router** - Routage côté client
 - **Tailwind CSS** - Framework CSS utilitaire
 - **PostCSS** - Transformation CSS
 - **Autoprefixer** - Compatibilité navigateurs
+
+### Backend (API)
+- **Node.js** - Runtime JavaScript
+- **Express.js** - Framework web minimaliste
+- **Prisma** - ORM moderne (prêt pour SQLite)
+- **CORS** - Gestion des requêtes cross-origin
 
 ## Installation et démarrage
 
@@ -27,7 +34,7 @@ Site web moderne pour un club de badminton, développé avec Vue 3, Vite et Tail
 - Node.js (version 16 ou supérieure)
 - npm ou yarn
 
-### Installation
+### Frontend
 
 1. Clonez le repository :
 ```bash
@@ -40,14 +47,25 @@ cd badminton
 npm install
 ```
 
-### Développement
-
-Démarrez le serveur de développement :
+3. Démarrez le serveur de développement :
 ```bash
 npm run dev
 ```
 
-L'application sera accessible sur `http://localhost:3000`
+L'application sera accessible sur `http://localhost:5173`
+
+### Backend (API)
+
+Pour lancer le serveur backend qui fournit les données via une API REST :
+
+1. Accédez au dossier server :
+```bash
+cd server
+```
+
+2. Suivez les instructions dans [`server/README.md`](./server/README.md)
+
+Le serveur API sera accessible sur `http://localhost:5174`
 
 ### Production
 
